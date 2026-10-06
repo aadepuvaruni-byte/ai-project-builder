@@ -1,0 +1,195 @@
+/* ===== AI Project Builder - style.css =====
+   Look: light page, white form card, dark input boxes, green accent. */
+
+@import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=Source+Sans+3:wght@400;600&display=swap");
+
+:root {
+    --ink: #12274a;          /* dark blue: headings and labels */
+    --paper: #f4f7fb;        /* page background */
+    --card: #ffffff;         /* white panels */
+    --line: #c9d6e8;         /* borders */
+    --accent: #14946f;       /* green buttons and progress bar */
+    --accent-dark: #0e6e53;  /* button hover */
+    --text: #1d2a3d;         /* body text on white */
+    --input-bg: #262730;     /* dark input boxes */
+    --input-text: #ffffff;   /* text inside input boxes */
+}
+
+/* ---------- Page ---------- */
+.stApp {
+    background: var(--paper);
+    color: var(--text);
+    font-family: "Source Sans 3", sans-serif;
+}
+
+h1, h2, h3 {
+    font-family: "Bricolage Grotesque", sans-serif;
+    color: var(--ink);
+}
+
+/* All normal text on the page is dark, so it is readable on white */
+[data-testid="stMarkdownContainer"] p,
+[data-testid="stMarkdownContainer"] li,
+[data-testid="stMarkdownContainer"] h1,
+[data-testid="stMarkdownContainer"] h2,
+[data-testid="stMarkdownContainer"] h3,
+[data-testid="stMarkdownContainer"] h4 {
+    color: var(--text);
+}
+
+[data-testid="stMarkdownContainer"] h1,
+[data-testid="stMarkdownContainer"] h2,
+[data-testid="stMarkdownContainer"] h3 {
+    color: var(--ink);
+}
+
+/* ---------- Hero banner (blueprint grid) ---------- */
+.hero {
+    background-color: var(--ink);
+    background-image:
+        linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+    background-size: 28px 28px;
+    border-radius: 14px;
+    padding: 2.2rem 2rem;
+    margin-bottom: 1.5rem;
+}
+
+.hero h1 {
+    color: #ffffff;
+    font-weight: 800;
+    font-size: 2.4rem;
+    margin: 0 0 0.4rem 0;
+    padding: 0;
+}
+
+.hero p {
+    color: #cfe0f7 !important;
+    font-size: 1.1rem;
+    margin: 0;
+    max-width: 52ch;
+}
+
+/* ---------- White form card ---------- */
+[data-testid="stForm"] {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 1.4rem;
+}
+
+/* ---------- Labels above the inputs (dark blue, always visible) ---------- */
+[data-testid="stWidgetLabel"],
+[data-testid="stWidgetLabel"] p,
+[data-testid="stWidgetLabel"] label {
+    color: var(--ink) !important;
+    font-weight: 600;
+}
+
+/* ---------- Dark input boxes with white text ---------- */
+textarea,
+input,
+[data-baseweb="textarea"],
+[data-baseweb="base-input"],
+[data-baseweb="select"] > div {
+    background-color: var(--input-bg) !important;
+    color: var(--input-text) !important;
+    border-radius: 10px !important;
+}
+
+textarea::placeholder,
+input::placeholder {
+    color: #a9b1c0 !important;
+}
+
+[data-baseweb="select"] svg {
+    fill: var(--input-text);
+}
+
+/* ---------- Buttons ---------- */
+.stButton > button,
+.stFormSubmitButton > button,
+.stDownloadButton > button {
+    background: var(--accent);
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    padding: 0.6rem 1.4rem;
+    font-weight: 600;
+    transition: background 0.15s ease;
+}
+
+.stButton > button p,
+.stFormSubmitButton > button p,
+.stDownloadButton > button p {
+    color: #ffffff !important;
+}
+
+.stButton > button:hover,
+.stFormSubmitButton > button:hover,
+.stDownloadButton > button:hover {
+    background: var(--accent-dark);
+    color: #ffffff;
+}
+
+/* Keyboard users can always see where they are */
+.stButton > button:focus-visible,
+.stFormSubmitButton > button:focus-visible,
+.stDownloadButton > button:focus-visible,
+textarea:focus-visible,
+input:focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 2px;
+}
+
+/* ---------- Difficulty meter ---------- */
+.meter-label {
+    font-weight: 600;
+    color: var(--ink) !important;
+    margin: 0.5rem 0 0.2rem 0;
+}
+
+.stProgress > div > div {
+    background-color: #dbe4f0 !important;   /* light track */
+}
+
+.stProgress > div > div > div {
+    background-color: var(--accent) !important;   /* green fill */
+}
+
+/* ---------- Result boxes (white cards with a green edge) ---------- */
+.st-key-result_box,
+.st-key-history_box {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-left: 6px solid var(--accent);
+    border-radius: 12px;
+    padding: 1.2rem 1.6rem;
+    margin-top: 1rem;
+}
+
+/* Small code pieces inside the plan */
+[data-testid="stMarkdownContainer"] code {
+    background: #e8eef7;
+    color: var(--ink);
+    border-radius: 4px;
+    padding: 0.1rem 0.35rem;
+}
+
+[data-testid="stMarkdownContainer"] pre code {
+    background: transparent;
+    color: inherit;
+    padding: 0;
+}
+
+/* ---------- Tabs ---------- */
+.stTabs [data-baseweb="tab"] {
+    font-weight: 600;
+    color: var(--ink);
+}
+
+/* ---------- Small screens ---------- */
+@media (max-width: 640px) {
+    .hero { padding: 1.4rem 1.1rem; }
+    .hero h1 { font-size: 1.7rem; }
+}
